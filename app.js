@@ -33,18 +33,19 @@ app.use(express.query());
 app.use('/wechat', wechat(config, function (req, res, next) {
   // 微信输入信息都在req.weixin上
   var message = req.weixin;
-  if (message.MsgType === 'device_text') {
-    // 设备文本消息
-    res.reply('这条回复会推到设备里去.');
-  } else if (message.MsgType === 'device_event') {
-    if (message.Event === 'subscribe_status' ||
-      message.Event === 'unsubscribe_status') {
-    //WIFI设备状态订阅,回复设备状态(1或0)
-      res.reply(1);
-    } else {
-      res.reply('这条回复会推到设备里去.')
-    }
-  }
+  res.reply('sent it back'+message);
+  // if (message.MsgType === 'device_text') {
+  //   // 设备文本消息
+  //   res.reply('这条回复会推到设备里去.');
+  // } else if (message.MsgType === 'device_event') {
+  //   if (message.Event === 'subscribe_status' ||
+  //     message.Event === 'unsubscribe_status') {
+  //   //WIFI设备状态订阅,回复设备状态(1或0)
+  //     res.reply(1);
+  //   } else {
+  //     res.reply('这条回复会推到设备里去.')
+  //   }
+  // }
 }));
 
 
