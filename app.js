@@ -16,6 +16,11 @@ var config={
 };
 //bxwCg8jlpMQiMQb9MRDn7J01ACRCB5w7BhA6KivPUIZ
 
+var testconfig={
+  token:'kimatestaccount',
+  appid:'wxc97428da06937ec0'
+}
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -48,6 +53,10 @@ app.use('/wechat', wechat(config, function (req, res, next) {
   // }
 }));
 
+app.use('/test',wechat(testconfig,function(req,res,next) {
+  var message=req.weixin;
+  res.reply(message);
+}));
 
 app.use('/', routes);
 
