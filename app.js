@@ -38,7 +38,11 @@ app.use(express.query());
 app.use('/wechat', wechat(config, function (req, res, next) {
   // 微信输入信息都在req.weixin上
   var message = req.weixin;
-  res.reply('sent it back'+message);
+  // res.reply('sent it back'+message);
+  res.reply({
+    content:'sent it back'+message,
+    type:'text'
+  });
   // if (message.MsgType === 'device_text') {
   //   // 设备文本消息
   //   res.reply('这条回复会推到设备里去.');
