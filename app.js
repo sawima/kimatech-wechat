@@ -59,7 +59,10 @@ app.use('/wechat', wechat(config, function (req, res, next) {
 
 app.use('/test',wechat(testconfig,function(req,res,next) {
   var message=req.weixin;
-  res.reply(message);
+  res.reply({
+    content:'sent it back'+message,
+    type:'text'
+  });
 }));
 
 app.use('/', routes);
