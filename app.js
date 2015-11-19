@@ -61,7 +61,7 @@ app.use('/test',wechat(testconfig,function(req,res,next) {
   var message=req.weixin;
   console.log(message);
   res.reply({
-    content:'sent it back'+message,
+    content:'sent it back'+message.content,
     type:'text'
   });
 }));
